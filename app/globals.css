@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/*
+ * B.OND brand tokens. Names mirror the Nordcraft theme so a future port back is mechanical:
+ *   --color--primary   -> body + heading text (mocha)
+ *   --color--secondary -> page background (bone)
+ *
+ * Don't use Tailwind's default greys/blues/etc. for brand surfaces.
+ */
+:root {
+  --color--primary: #2e2520;
+  --color--secondary: #f4efe8;
+  --color--text-muted: rgba(46, 37, 32, 0.65);
+  --color--border: rgba(46, 37, 32, 0.12);
+  --color--surface-elev: rgba(255, 255, 255, 0.5);
+
+  /* Type scale anchors. Tailwind utilities for fluent sizing on top. */
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Layout anchors */
+  --max-content: 1024px;
+}
+
+/*
+ * Tailwind v4 theme bridge so utility classes like `bg-bone`, `text-mocha`,
+ * `border-hair` map to the brand tokens above.
+ */
+@theme inline {
+  --color-bone: var(--color--secondary);
+  --color-mocha: var(--color--primary);
+  --color-muted: var(--color--text-muted);
+  --color-hair: var(--color--border);
+  --color-elev: var(--color--surface-elev);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html,
+body {
+  background: var(--color--secondary);
+  color: var(--color--primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Generous default rhythm. */
+body {
+  line-height: 1.6;
+}
+
+/* Strip default ring of focus on mouse interaction but keep for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--color--primary);
+  outline-offset: 2px;
+}

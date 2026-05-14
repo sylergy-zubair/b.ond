@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.nordcraft.com)",
+      "WebFetch(domain:context7.com)"
+    ]
+  }
+}
