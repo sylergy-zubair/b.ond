@@ -47,7 +47,7 @@ export default function TextColorToggle() {
     <button
       type="button"
       onClick={cycle}
-      className="hidden sm:inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-hair bg-bone/80 px-2.5 text-xs font-medium tracking-wide text-mocha hover:bg-mocha/5 transition-colors"
+      className="inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-hair bg-bone/80 px-2.5 text-xs font-medium tracking-wide text-mocha hover:bg-mocha/5 transition-colors"
       aria-pressed={variant !== "a"}
       aria-label={`Text colour ${LABELS[variant]} of ${VARIANTS.length}`}
       title="Cycle text colour (A / B / C)"
