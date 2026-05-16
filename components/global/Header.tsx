@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TextColorToggle from "@/components/global/TextColorToggle";
 
 const navLinks = [
   { href: "/smile-preview", label: "AI Smile Preview" },
@@ -33,12 +34,15 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <Link
-          href="/smile-preview"
-          className="hidden sm:inline-flex items-center rounded-full bg-mocha text-bone text-sm px-4 py-2 hover:opacity-90 transition-opacity"
-        >
-          Start
-        </Link>
+        <div className="hidden sm:flex items-center gap-2">
+          <TextColorToggle />
+          <Link
+            href="/smile-preview"
+            className="inline-flex items-center rounded-full bg-mocha text-bone text-sm px-4 py-2 hover:opacity-90 transition-opacity"
+          >
+            Start
+          </Link>
+        </div>
         {/* TODO mobile menu (hamburger) — defer until we have pages built */}
       </div>
     </header>

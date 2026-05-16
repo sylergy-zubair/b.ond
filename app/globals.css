@@ -9,9 +9,15 @@
  */
 :root {
   --color--primary: #2e2520;
+  --color--primary-b: #3a2733;
+  --color--primary-c: #1f3a36;
   --color--secondary: #f4efe8;
   --color--text-muted: rgba(46, 37, 32, 0.65);
+  --color--text-muted-b: rgba(58, 39, 51, 0.65);
+  --color--text-muted-c: rgba(31, 58, 54, 0.65);
   --color--border: rgba(46, 37, 32, 0.12);
+  --color--border-b: rgba(58, 39, 51, 0.12);
+  --color--border-c: rgba(31, 58, 54, 0.12);
   --color--surface-elev: rgba(255, 255, 255, 0.5);
 
   /* Type scale anchors. Tailwind utilities for fluent sizing on top. */
@@ -20,6 +26,19 @@
 
   /* Layout anchors */
   --max-content: 1024px;
+}
+
+/* Text colour preview (header toggle): A = mocha, B / C = alternates */
+html[data-text-variant="b"] {
+  --color--primary: var(--color--primary-b);
+  --color--text-muted: var(--color--text-muted-b);
+  --color--border: var(--color--border-b);
+}
+
+html[data-text-variant="c"] {
+  --color--primary: var(--color--primary-c);
+  --color--text-muted: var(--color--text-muted-c);
+  --color--border: var(--color--border-c);
 }
 
 /*
@@ -51,7 +70,43 @@ body {
   line-height: 1.6;
 }
 
-/* Strip default ring of focus on mouse interaction but keep for keyboard users. */
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Parallax utilities
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Scroll-driven parallax: background moves at fraction of scroll speed.
+ * Usage: class="parallax" data-speed="0.8" on a position:sticky container.
+ * Relies on CSS scroll-timeline (Chrome 115+, Safari pending). JS fallback
+ * via IntersectionObserver activates when scroll-timeline unavailable. */
+@supports (animation-timeline: scroll()) {
+  .parallax-bg {
+    animation: parallax-float linear both;
+    animation-timeline: scroll(root);
+    --parallax-speed: 0.8;
+  }
+
+  @keyframes parallax-float {
+    from { transform: translateY(calc(var(--parallax-speed, 0.8) * 0px)); }
+    to   { transform: translateY(calc(var(--parallax-speed, 0.8) * 120px)); }
+  }
+}
+
+/* Fallback for browsers without scroll-timeline: JS-driven via .js-parallax */
+.parallax-fallback-active .parallax-bg {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-bg,
+  .parallax-fade-in {
+    animation: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Focus
+ * ───────────────────────────────────────────────────────────────────────────── */
+
 :focus-visible {
   outline: 2px solid var(--color--primary);
   outline-offset: 2px;

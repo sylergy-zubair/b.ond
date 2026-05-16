@@ -36,8 +36,12 @@ export default function HomeQualitySection() {
 
         <div className="sm:col-span-7">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-hair">
-            {/* Placeholder for cinematic loop. Swap for <video autoPlay muted loop playsInline /> when ready. */}
-            <div className="absolute inset-0 bg-bone flex items-center justify-center">
+            {/* Parallax placeholder — floats at half scroll speed. */}
+            <div
+              className="absolute inset-0 bg-bone parallax-bg"
+              style={{ "--parallax-speed": "0.4" } as React.CSSProperties}
+              aria-hidden
+            >
               <span className="text-xs uppercase tracking-[0.2em] text-muted">
                 quality video loop
               </span>

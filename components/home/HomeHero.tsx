@@ -11,14 +11,13 @@ export default function HomeHero() {
       aria-labelledby="hero-title"
       className="relative isolate overflow-hidden"
     >
-      {/* Placeholder video well — replace with <video> autoplay muted loop playsinline */}
+      {/* Parallax bg layer — floats up as user scrolls. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-bone"
+        className="absolute inset-0 -z-10 bg-bone parallax-bg"
+        style={{ "--parallax-speed": "0.6" } as React.CSSProperties}
       >
-        {/* Subtle vignette so foreground stays legible once real video lands */}
         <div className="absolute inset-0 bg-gradient-to-b from-bone/0 via-bone/0 to-bone" />
-        {/* Label sits low in the well so it never competes with the headline (full-area centering bled through). */}
         <div className="absolute inset-x-0 bottom-0 top-[46%] z-[1] flex items-end justify-center pb-10 sm:pb-14 sm:items-end sm:justify-end sm:pr-12 pointer-events-none">
           <span className="text-xs uppercase tracking-[0.2em] text-muted/90">
             hero video
