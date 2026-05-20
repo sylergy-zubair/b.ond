@@ -65,9 +65,77 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Generous default rhythm. */
-body {
-  line-height: 1.6;
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Home2 (dark variant) — Committed dark + champagne gold
+ * ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  --color--navy: #1a2a3a;
+  --color--cream: #f5ecd6;
+  --color--gold: #d4af37;
+  --color--tile: #faf9f6;
+  --color--charcoal: #3d3d3d;
+  --color--border-light: rgba(255, 255, 255, 0.12);
+}
+
+/* Scroll-driven parallax for text (text-float on dark bg where bg parallax invisible) */
+@supports (animation-timeline: scroll()) {
+  .text-parallax {
+    animation: text-float-in linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes text-float-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Home2 scoped overrides */
+[data-page="home2"] {
+  --bg-section: var(--color--navy);
+}
+
+.font-brand-serif {
+  font-family: var(--font-lusso-serif), "Cormorant Garamond", Georgia, serif;
+}
+
+[data-page="home2"] .section-navy {
+  background-color: var(--color--navy);
+  color: var(--color--cream);
+}
+
+[data-page="home2"] .section-tile {
+  background-color: var(--color--tile);
+  color: var(--color--navy);
+}
+
+[data-page="home2"] .text-gold {
+  color: var(--color--gold);
+}
+
+[data-page="home2"] .border-light {
+  border-color: var(--color--border-light);
+}
+
+[data-page="home2"] .border-tile {
+  border-color: rgba(26, 42, 58, 0.12);
+}
+
+[data-page="home2"] .cta-gold {
+  background-color: var(--color--gold);
+  color: var(--color--navy);
+}
+
+[data-page="home2"] .cta-outline-gold {
+  border: 1px solid var(--color--gold);
+  color: var(--color--gold);
+  background: transparent;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
